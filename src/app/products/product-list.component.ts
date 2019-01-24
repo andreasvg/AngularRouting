@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Product } from './product';
 import { ProductService } from './product.service';
+import { MessageService } from '../messages/message.service';
 
 @Component({
   templateUrl: './product-list.component.html',
@@ -29,7 +30,8 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService) {}
+              private productService: ProductService,
+              private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.listFilter = this.route.snapshot.queryParamMap.get('filterBy') || '';
@@ -38,6 +40,8 @@ export class ProductListComponent implements OnInit {
 
     this.productService.getProducts().subscribe(
       products => {
+        this.messageService.addMessage('Products retrieved from server');
+
         this.products = products;
         this.filteredProducts = this.performFilter(this.listFilter);
       },

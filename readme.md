@@ -2,26 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project is from Deborah Kurata's Pluralsight course on Angular routing.
 
-## Code scaffolding
+## Child Routes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The Products feature module implements child routes to view and edit products. The view to list products is also a child route, and the parent route for products is component-less.
 
-## Build
+## Resolver
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+We use the ProductResolver to fetch product data before showing the product detail or edit product views.
 
-## Running unit tests
+## Route Guards
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Two route guards have been built in the AuthGuardService:
 
-## Running end-to-end tests
+- canActivate (determines whether the Product routes may be activated)
+- canLoad (determines whether the Product module may be loaded)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Secondary Routes
 
-## Further help
+A secondary route are implemented to diplay popup messages. See the routes defined in the Message module.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Lazy Loading
+
+The SelectiveStrategy service implements a custom preloading loading strategy for preloading the Products feature module.
